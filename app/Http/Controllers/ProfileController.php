@@ -16,8 +16,23 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        // Detectar si viene de admin basado en el referer o parámetro
+        $referer = $request->header('referer', '');
+        $fromAdmin = $request->query('from') === 'admin' || str_contains($referer, '/admin');
+        
+        // Si viene de admin, guardar en sesión
+        if ($fromAdmin) {
+            $request->session()->put('admin_context', true);
+        } else {
+            // Si viene de usuario, limpiar contexto admin
+            $request->session()->forget('admin_context');
+        }
+        
+        $isAdminContext = $fromAdmin || $request->session()->get('admin_context', false);
+        
         return view('profile.edit', [
             'user' => $request->user(),
+            'isAdminContext' => $isAdminContext,
         ]);
     }
 
@@ -34,7 +49,14 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // Mantener el contexto admin si estaba en admin
+        $redirect = Redirect::route('profile.edit')->with('status', 'profile-updated');
+        
+        if ($request->session()->get('admin_context', false)) {
+            $request->session()->put('admin_context', true);
+        }
+        
+        return $redirect;
     }
 
     /**

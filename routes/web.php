@@ -6,7 +6,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/barberos', function () {
+    return view('barberos');
+})->name('barberos');
+
+Route::get('/citas', function () {
+    return view('citas');
+})->name('citas');
+
+Route::get('/cortes-cabello', function () {
+    return view('cortes-cabello');
+})->name('cortes-cabello');
+
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

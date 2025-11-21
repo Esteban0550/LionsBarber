@@ -75,10 +75,9 @@
             <nav x-cloak class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col bg-neutral-100 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:bg-neutral-800" x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
 
                 <!-- logo  -->
-                <a href="{{ route('admin.dashboard') }}" class="ml-2 mb-4 w-fit flex items-center gap-2">
+                <a href="{{ route('admin.dashboard') }}" class="mb-4 w-full flex items-center justify-center">
                     <span class="sr-only">homepage</span>
-                    <img src="{{ asset('images/lion-logo.svg') }}" alt="LionsBarber Logo" class="h-12 w-auto dark:invert" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 hidden">{{ config('app.name', 'LionsBarber') }}</span>
+                    <img src="{{ asset('images/pngggggggg12345 (1).png') }}" alt="LionsBarber Logo" class="h-12 w-auto object-contain">
                 </a>
 
                 <!-- search  -->
@@ -108,12 +107,6 @@
                         @endif
                     </a>
 
-                    <a href="{{ route('profile.edit') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-hidden dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
-                        </svg>
-                        <span>Configuración</span>
-                    </a>
                 </div>
 
                 <!-- Profile Menu  -->
@@ -137,20 +130,11 @@
                     <!-- menu -->
                     <div x-cloak x-show="menuIsOpen" class="absolute bottom-20 right-6 z-20 -mr-1 w-48 divide-y divide-neutral-300 bg-white dark:divide-neutral-700 dark:bg-neutral-950 rounded-none md:-right-44 md:bottom-4" role="menu" x-on:click.outside="menuIsOpen = false" x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()" x-transition="" x-trap="menuIsOpen">
                         <div class="flex flex-col py-1.5">
-                            <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-hidden dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100" role="menuitem">
+                            <a href="{{ route('profile.edit') }}?from=admin" class="flex items-center gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-hidden dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100" role="menuitem">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                                     <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z"/>
                                 </svg>
                                 <span>Perfil</span>
-                            </a>
-                        </div>
-
-                        <div class="flex flex-col py-1.5">
-                            <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-hidden dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100" role="menuitem">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
-                                </svg>
-                                <span>Configuración</span>
                             </a>
                         </div>
 
@@ -178,7 +162,6 @@
                         <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
                             <img src="{{ asset('images/lion-logo.svg') }}" alt="LionsBarber Logo" class="h-10 w-auto dark:invert" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <span class="text-xl font-bold text-neutral-900 dark:text-neutral-100 hidden">{{ config('app.name', 'LionsBarber') }}</span>
-                            <span class="text-lg font-semibold text-neutral-700 dark:text-neutral-300">LionsBarber</span>
                             <span class="text-sm text-neutral-500 dark:text-neutral-400">Admin</span>
                         </a>
                     </div>
