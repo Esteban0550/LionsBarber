@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="mb-6">
+    <div class="mb-6 text-center">
         <h1 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
             Iniciar Sesión
         </h1>

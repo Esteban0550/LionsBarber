@@ -1,3 +1,5 @@
+@import './scroll-stack.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

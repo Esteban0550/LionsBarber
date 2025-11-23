@@ -79,4 +79,20 @@ class User extends Authenticatable
     {
         return $this->role && $this->role->name === 'client';
     }
+
+    /**
+     * Relación con las citas agendadas por el usuario
+     */
+    public function citas()
+    {
+        return $this->hasMany(Cita::class);
+    }
+
+    /**
+     * Relación con las citas donde el usuario es el barbero
+     */
+    public function citasComoBarbero()
+    {
+        return $this->hasMany(Cita::class, 'barbero_id');
+    }
 }

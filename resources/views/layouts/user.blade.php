@@ -7,6 +7,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ asset('images/pngggggggg12345 (1).png') }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -131,49 +134,88 @@
 
                 <!-- sidebar links -->
                 <div class="flex flex-col gap-2 overflow-y-auto pb-6">
-                    <a href="{{ route('welcome') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('welcome') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('welcome') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('welcome') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd"/>
                         </svg>
                         <span>Inicio</span>
                     </a>
-                    <a href="{{ route('barberos') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('barberos') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('barberos') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('barberos') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z"/>
                         </svg>
                         <span>Barberos</span>
                     </a>
-                    <a href="{{ route('citas') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('citas') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('citas') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('citas') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7v-.25A.75.75 0 0 1 14.25 3h2.5a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-13a.75.75 0 0 1-.75-.75v-9a.75.75 0 0 1 .75-.75H4V4.75A.75.75 0 0 1 4.75 4h.5V2.75A.75.75 0 0 1 5.75 2Zm-1.5 4.5v8h12.5v-8H4.25ZM6 10a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 6 10Zm.75 2.25a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd"/>
                         </svg>
                         <span>Citas</span>
                     </a>
-                    <a href="{{ route('cortes-cabello') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('cortes-cabello') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('cortes-cabello') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('cortes-cabello') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
                         </svg>
                         <span>Cortes de Cabello</span>
                     </a>
-                    <a href="{{ route('menu') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('menu') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('menu') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('menu') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"/>
                         </svg>
                         <span>Menú</span>
                     </a>
+                    <a href="{{ route('nosotros') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('nosotros') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
+                            <path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1 13a5 5 0 0 1 10 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2ZM16 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM19 10a1 1 0 0 0-1 1v1a2 2 0 0 1-2 2h-1a1 1 0 0 0 0 2h1a4 4 0 0 0 4-4v-1a1 1 0 0 0-1-1Z"/>
+                        </svg>
+                        <span>Nosotros</span>
+                    </a>
                 </div>
 
+                <!-- Quick Actions Section -->
+                @auth
+                <div class="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-700">
+                    <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-3 px-3">
+                        Acciones Rápidas
+                    </p>
+                    <div class="flex flex-col gap-2">
+                        <a href="{{ route('citas') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4 shrink-0" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Agendar Cita</span>
+                        </a>
+                        <a href="{{ route('barberos') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4 shrink-0" aria-hidden="true">
+                                <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z"/>
+                            </svg>
+                            <span>Ver Barberos</span>
+                        </a>
+                    </div>
+                </div>
+                @endauth
+
                 <!-- Profile/Login Button -->
-                <div class="mt-auto">
+                <div class="mt-auto pt-6 border-t border-neutral-200 dark:border-neutral-700">
                     @auth
-                        <a href="{{ route('profile.edit') }}" class="flex w-full items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('profile.*') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                        <a href="{{ route('profile.edit') }}" class="flex w-full items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('profile.*') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                                 <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z"/>
                             </svg>
-                            <span>Perfil</span>
+                            <span>Mi Perfil</span>
                         </a>
+                        <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                            @csrf
+                            <button type="submit" class="flex w-full items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 hover:text-red-700 dark:text-neutral-400 dark:hover:bg-red-900/20 dark:hover:text-red-300 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd" d="M6 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H6.75A.75.75 0 0 1 6 10Z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Cerrar Sesión</span>
+                            </button>
+                        </form>
                     @else
-                        <a href="{{ route('login') }}" class="flex w-full items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 hover:bg-black/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100 dark:focus-visible:outline-white">
+                        <a href="{{ route('login') }}" class="flex w-full items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:focus-visible:outline-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd"/>
                                 <path fill-rule="evenodd" d="M6 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H6.75A.75.75 0 0 1 6 10Z" clip-rule="evenodd"/>
@@ -213,6 +255,7 @@
                                 'citas' => 'Citas',
                                 'cortes-cabello' => 'Cortes de Cabello',
                                 'menu' => 'Menú',
+                                'nosotros' => 'Nosotros',
                                 'welcome' => 'Inicio',
                             ];
                             $currentRouteName = request()->route()->getName();

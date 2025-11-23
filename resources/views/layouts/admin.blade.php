@@ -7,6 +7,9 @@
 
         <title>{{ config('app.name', 'Laravel') }} - Admin</title>
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ asset('images/pngggggggg12345 (1).png') }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -16,6 +19,9 @@
         
         <!-- Alpine.js -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <style>
             [x-cloak] {
@@ -61,6 +67,166 @@
             .dark ::-webkit-scrollbar-thumb:hover {
                 background: #6b7280;
             }
+            
+            /* Animaciones modernas */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+            }
+            
+            @keyframes shimmer {
+                0% {
+                    background-position: -1000px 0;
+                }
+                100% {
+                    background-position: 1000px 0;
+                }
+            }
+            
+            .animate-fade-in-up {
+                animation: fadeInUp 0.6s ease-out;
+            }
+            
+            .animate-slide-in-right {
+                animation: slideInRight 0.5s ease-out;
+            }
+            
+            /* Efectos hover mejorados */
+            .hover-lift {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .hover-lift:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            
+            .hover-scale {
+                transition: transform 0.2s ease;
+            }
+            
+            .hover-scale:hover {
+                transform: scale(1.05);
+            }
+            
+            .hover-glow {
+                transition: box-shadow 0.3s ease;
+            }
+            
+            .hover-glow:hover {
+                box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            }
+            
+            /* Gradientes modernos */
+            .gradient-amber {
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            }
+            
+            .gradient-blue {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            }
+            
+            .gradient-purple {
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            }
+            
+            /* Glassmorphism effect */
+            .glass {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .dark .glass {
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            /* Shimmer effect */
+            .shimmer {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                background-size: 1000px 100%;
+                animation: shimmer 2s infinite;
+            }
+            
+            /* Efecto de fondo animado */
+            .animated-bg {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .animated-bg::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+                animation: rotate 20s linear infinite;
+                pointer-events: none;
+            }
+            
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            
+            /* Efecto de brillo en botones */
+            .glow-button {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .glow-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: left 0.5s;
+            }
+            
+            .glow-button:hover::before {
+                left: 100%;
+            }
         </style>
     </head>
     <body class="font-sans antialiased">
@@ -70,9 +236,9 @@
             <a class="sr-only" href="#main-content">skip to the main content</a>
 
             <!-- dark overlay for when the sidebar is open on smaller screens  -->
-            <div x-cloak x-show="showSidebar" class="fixed inset-0 z-10 bg-neutral-950/10 backdrop-blur-xs md:hidden" aria-hidden="true" x-on:click="showSidebar = false" x-transition.opacity></div>
+            <div x-cloak x-show="showSidebar" class="fixed inset-0 z-10 bg-neutral-950/10 backdrop-blur-xs md:hidden" aria-hidden="true" x-on:click="showSidebar = false"></div>
 
-            <nav x-cloak class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col bg-neutral-100 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:bg-neutral-800" x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
+            <nav x-cloak class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col bg-neutral-100 p-4 md:w-64 md:translate-x-0 md:relative dark:bg-neutral-800" x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
 
                 <!-- logo  -->
                 <a href="{{ route('admin.dashboard') }}" class="mb-4 w-full flex items-center justify-center">
@@ -90,19 +256,39 @@
 
                 <!-- sidebar links  -->
                 <div class="flex flex-col gap-2 overflow-y-auto pb-6">
-                    <a href="{{ route('admin.dashboard') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('admin.dashboard') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('admin.dashboard') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('admin.dashboard') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
-                            <path d="M15.5 2A1.5 1.5 0 0 0 14 3.5v13a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 16.5 2h-1ZM9.5 6A1.5 1.5 0 0 0 8 7.5v9A1.5 1.5 0 0 0 9.5 18h1a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 10.5 6h-1ZM3.5 10A1.5 1.5 0 0 0 2 11.5v5A1.5 1.5 0 0 0 3.5 18h1A1.5 1.5 0 0 0 6 16.5v-5A1.5 1.5 0 0 0 4.5 10h-1Z"/>
+                            <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h11A2.5 2.5 0 0 1 18 4.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 15.5v-11ZM4.5 4a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3ZM9 4.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3ZM4.5 10a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5h-5ZM10 10a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5h-5Z"/>
                         </svg>
                         <span>Dashboard</span>
                     </a>
 
-                    <a href="{{ route('admin.users') }}" class="flex items-center rounded-none gap-2 px-2 py-1.5 text-sm font-medium {{ request()->routeIs('admin.users*') ? 'bg-black/10 text-neutral-900 dark:bg-white/10 dark:text-neutral-100' : 'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                    <a href="{{ route('admin.users') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('admin.users*') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
                             <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z"/>
                         </svg>
                         <span>Usuarios</span>
                         @if(request()->routeIs('admin.users*'))
+                            <span class="sr-only">active</span>
+                        @endif
+                    </a>
+
+                    <a href="{{ route('admin.citas') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('admin.citas*') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Citas</span>
+                        @if(request()->routeIs('admin.citas*'))
+                            <span class="sr-only">active</span>
+                        @endif
+                    </a>
+
+                    <a href="{{ route('admin.estadisticas') }}" class="flex items-center rounded-lg gap-2 px-3 py-2 text-sm font-medium {{ request()->routeIs('admin.estadisticas*') ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg' : 'text-neutral-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 hover:text-amber-700 dark:text-neutral-400 dark:hover:bg-amber-900/20 dark:hover:text-amber-300' }} underline-offset-2 focus-visible:underline focus:outline-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
+                            <path d="M15.5 2A1.5 1.5 0 0 0 14 3.5v13a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 16.5 2h-1ZM9.5 6A1.5 1.5 0 0 0 8 7.5v9A1.5 1.5 0 0 0 9.5 18h1a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 10.5 6h-1ZM3.5 10A1.5 1.5 0 0 0 2 11.5v5A1.5 1.5 0 0 0 3.5 18h1A1.5 1.5 0 0 0 6 16.5v-5A1.5 1.5 0 0 0 4.5 10h-1Z"/>
+                        </svg>
+                        <span>Estadísticas</span>
+                        @if(request()->routeIs('admin.estadisticas*'))
                             <span class="sr-only">active</span>
                         @endif
                     </a>
@@ -128,7 +314,7 @@
                     </button>  
 
                     <!-- menu -->
-                    <div x-cloak x-show="menuIsOpen" class="absolute bottom-20 right-6 z-20 -mr-1 w-48 divide-y divide-neutral-300 bg-white dark:divide-neutral-700 dark:bg-neutral-950 rounded-none md:-right-44 md:bottom-4" role="menu" x-on:click.outside="menuIsOpen = false" x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()" x-transition="" x-trap="menuIsOpen">
+                    <div x-cloak x-show="menuIsOpen" class="absolute bottom-20 right-6 z-20 -mr-1 w-48 divide-y divide-neutral-300 bg-white dark:divide-neutral-700 dark:bg-neutral-950 rounded-none md:-right-44 md:bottom-4" role="menu" x-on:click.outside="menuIsOpen = false" x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()" x-trap="menuIsOpen">
                         <div class="flex flex-col py-1.5">
                             <a href="{{ route('profile.edit') }}?from=admin" class="flex items-center gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-hidden dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100" role="menuitem">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0" aria-hidden="true">
