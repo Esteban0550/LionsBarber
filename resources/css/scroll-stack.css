@@ -26,7 +26,7 @@
   will-change: transform, filter;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   min-height: 20rem;
   width: 100%;
   margin: 30px 0;
@@ -37,13 +37,13 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   position: relative;
-  background: white;
-  color: #1c1917;
+  background: #2a2a2a;
+  color: #e5e5e5;
 }
 
 .dark .scroll-stack-card {
-  background: #1c1917;
-  color: #d6d3d1;
+  background: #2a2a2a;
+  color: #e5e5e5;
 }
 
 .scroll-stack-end {

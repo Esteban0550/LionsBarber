@@ -108,17 +108,6 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="mt-12 text-center">
-            <div class="bg-black rounded-lg shadow-lg p-8">
-                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">¿Listo para tu nuevo look?</h3>
-                <p class="text-white mb-6 text-lg">Agenda tu cita ahora y transforma tu estilo</p>
-                <a href="{{ route('citas') }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-xl">
-                    Agendar Cita Ahora
-                </a>
-            </div>
-        </div>
-
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 if (window.initMagicBento) {
