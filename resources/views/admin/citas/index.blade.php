@@ -30,7 +30,7 @@
                 </div>
             @endif
 
-            <div class="bg-white dark:bg-neutral-800 overflow-hidden shadow-sm sm:rounded-lg hover-lift border border-gray-200 dark:border-neutral-700">
+            <div class="bg-white dark:bg-neutral-800 overflow-hidden shadow-sm sm:rounded-lg border border-gray-200 dark:border-neutral-700">
                 <div class="p-6">
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
@@ -70,7 +70,12 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900 dark:text-gray-100">
-                                                {{ $cita->barbero ? $cita->barbero->name : 'Sin asignar' }}
+                                                @if($cita->barbero)
+                                                    {{ $cita->barbero->name }}
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">(ID: {{ $cita->barbero_id }})</span>
+                                                @else
+                                                    Sin asignar
+                                                @endif
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">

@@ -10,7 +10,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Appointment Form -->
+            <!-- Formulario de Cita -->
             <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-6 hover-lift animate-fade-in-up border border-neutral-200 dark:border-neutral-700">
                 <h2 class="text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
                     Nueva Cita
@@ -94,7 +94,7 @@
                 </form>
             </div>
 
-            <!-- My Appointments -->
+            <!-- Mis Citas -->
             <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-6 hover-lift animate-fade-in-up border border-neutral-200 dark:border-neutral-700" style="animation-delay: 0.2s;">
                 <h2 class="text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
                     Citas Agendadas

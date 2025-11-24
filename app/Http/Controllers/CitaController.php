@@ -41,12 +41,27 @@ class CitaController extends Controller
             $validated['user_id'] = auth()->id();
         }
 
-        // Si se seleccionó un barbero, intentar encontrar un usuario staff o dejar null
-        if (isset($validated['barbero']) && $validated['barbero']) {
-            // Intentar encontrar un barbero staff, si no existe, dejar null
-            $barberoStaff = User::whereHas('role', fn($q) => $q->where('name', 'staff'))->first();
-            if ($barberoStaff) {
-                $validated['barbero_id'] = $barberoStaff->id;
+        // Si se seleccionó un barbero, asignar el barbero correspondiente según el índice
+        if (isset($validated['barbero']) && $validated['barbero'] && $validated['barbero'] !== '') {
+            // Obtener todos los barberos staff ordenados por ID para mantener consistencia
+            $barberosStaff = User::whereHas('role', fn($q) => $q->where('name', 'staff'))
+                ->orderBy('id')
+                ->get();
+            
+            // El índice seleccionado (1, 2, 3) corresponde al índice del array (0, 1, 2)
+            $indiceBarbero = (int)$validated['barbero'] - 1;
+            
+            // Verificar que tenemos barberos disponibles
+            if ($barberosStaff->isEmpty()) {
+                // No hay barberos, dejar null
+                $validated['barbero_id'] = null;
+            } elseif ($barberosStaff->count() > $indiceBarbero && $indiceBarbero >= 0) {
+                // Si existe el barbero en ese índice, asignarlo
+                $barberoSeleccionado = $barberosStaff[$indiceBarbero];
+                $validated['barbero_id'] = $barberoSeleccionado->id;
+            } else {
+                // Si no hay suficientes barberos para ese índice, asignar el último disponible
+                $validated['barbero_id'] = $barberosStaff->last()->id;
             }
         }
         unset($validated['barbero']);
