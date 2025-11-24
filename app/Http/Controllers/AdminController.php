@@ -28,10 +28,44 @@ class AdminController extends Controller
     /**
      * Display a listing of users.
      */
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::withTrashed()->with('role')->latest()->paginate(15);
-        return view('admin.users.index', compact('users'));
+        $query = User::withTrashed()->with('role');
+        
+        // Búsqueda por nombre o email
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+        
+        // Filtro por rol
+        if ($request->filled('role')) {
+            $query->whereHas('role', function($q) use ($request) {
+                $q->where('name', $request->role);
+            });
+        }
+        
+        // Filtro por estado (activo/inactivo)
+        if ($request->filled('status')) {
+            if ($request->status === 'active') {
+                $query->whereNull('deleted_at');
+            } elseif ($request->status === 'inactive') {
+                $query->whereNotNull('deleted_at');
+            }
+        }
+        
+        // Ordenamiento
+        $sortBy = $request->get('sort_by', 'created_at');
+        $sortOrder = $request->get('sort_order', 'desc');
+        $query->orderBy($sortBy, $sortOrder);
+        
+        $users = $query->paginate(15)->withQueryString();
+        $roles = Role::all();
+        
+        return view('admin.users.index', compact('users', 'roles'));
     }
 
     /**

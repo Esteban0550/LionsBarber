@@ -24,6 +24,41 @@ class CitaController extends Controller
     }
 
     /**
+     * Get occupied hours for a specific date
+     */
+    public function getOccupiedHours(Request $request)
+    {
+        $request->validate([
+            'fecha' => ['required', 'date'],
+            'barbero_id' => ['nullable', 'exists:users,id'],
+        ]);
+
+        $fecha = $request->fecha;
+        $barberoId = $request->barbero_id;
+
+        // Obtener citas ocupadas para esa fecha
+        $query = Cita::where('fecha', $fecha)
+            ->whereIn('estado', ['pendiente', 'confirmada']); // Solo considerar citas activas
+
+        // Si se especifica un barbero, filtrar por barbero
+        if ($barberoId) {
+            $query->where('barbero_id', $barberoId);
+        }
+
+        $citasOcupadas = $query->get();
+
+        // Extraer las horas ocupadas
+        $horasOcupadas = $citasOcupadas->map(function($cita) {
+            return date('H:i', strtotime($cita->hora));
+        })->toArray();
+
+        return response()->json([
+            'horas_ocupadas' => $horasOcupadas,
+            'total' => count($horasOcupadas)
+        ]);
+    }
+
+    /**
      * Store a newly created cita.
      */
     public function store(Request $request)
@@ -65,6 +100,18 @@ class CitaController extends Controller
             }
         }
         unset($validated['barbero']);
+
+        // Validar que no haya una cita duplicada en la misma fecha y hora
+        $citaExistente = Cita::where('fecha', $validated['fecha'])
+            ->where('hora', $validated['hora'])
+            ->whereIn('estado', ['pendiente', 'confirmada'])
+            ->first();
+
+        if ($citaExistente) {
+            return redirect()->back()
+                ->withErrors(['hora' => 'Esta hora ya está ocupada. Por favor, selecciona otra hora.'])
+                ->withInput();
+        }
 
         // Estado por defecto: pendiente
         $validated['estado'] = 'pendiente';

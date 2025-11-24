@@ -186,6 +186,98 @@
             // El formulario se enviará normalmente, el SweetAlert se mostrará después si hay éxito
             // Si hay errores, se mostrarán en el formulario
         });
+
+        // Obtener horas ocupadas cuando se selecciona una fecha
+        const fechaInput = document.getElementById('fecha');
+        const horaInput = document.getElementById('hora');
+        const barberoSelect = document.getElementById('barbero');
+        let horasOcupadas = [];
+
+        function cargarHorasOcupadas() {
+            const fecha = fechaInput.value;
+            
+            if (!fecha) {
+                horaInput.disabled = false;
+                horaInput.title = '';
+                return;
+            }
+
+            // Construir la URL (por ahora sin filtrar por barbero específico, 
+            // se validará en el backend todas las citas de esa fecha)
+            const url = '{{ route("citas.horas-ocupadas") }}?fecha=' + fecha;
+
+            // Mostrar loading
+            horaInput.disabled = true;
+            horaInput.title = 'Cargando horas disponibles...';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    horasOcupadas = data.horas_ocupadas || [];
+                    actualizarHorasDisponibles();
+                })
+                .catch(error => {
+                    console.error('Error al cargar horas ocupadas:', error);
+                    horaInput.disabled = false;
+                    horaInput.title = '';
+                });
+        }
+
+        function actualizarHorasDisponibles() {
+            const horaSeleccionada = horaInput.value;
+            
+            // Habilitar el input
+            horaInput.disabled = false;
+            horaInput.title = '';
+
+            // Si hay horas ocupadas, validar la hora seleccionada
+            if (horasOcupadas.length > 0) {
+                if (horaSeleccionada && horasOcupadas.includes(horaSeleccionada)) {
+                    horaInput.setCustomValidity('Esta hora ya está ocupada. Por favor, selecciona otra hora.');
+                    horaInput.style.borderColor = '#ef4444';
+                } else {
+                    horaInput.setCustomValidity('');
+                    horaInput.style.borderColor = '';
+                }
+
+                // Agregar mensaje informativo
+                let mensajeDiv = document.getElementById('horas-ocupadas-mensaje');
+                if (!mensajeDiv) {
+                    mensajeDiv = document.createElement('div');
+                    mensajeDiv.id = 'horas-ocupadas-mensaje';
+                    mensajeDiv.className = 'mt-2 text-sm text-amber-600 dark:text-amber-400';
+                    horaInput.parentElement.appendChild(mensajeDiv);
+                }
+                
+                if (horasOcupadas.length > 0) {
+                    mensajeDiv.textContent = `⚠️ ${horasOcupadas.length} hora(s) ocupada(s) en esta fecha: ${horasOcupadas.join(', ')}`;
+                    mensajeDiv.style.display = 'block';
+                } else {
+                    mensajeDiv.style.display = 'none';
+                }
+            } else {
+                horaInput.setCustomValidity('');
+                horaInput.style.borderColor = '';
+                const mensajeDiv = document.getElementById('horas-ocupadas-mensaje');
+                if (mensajeDiv) {
+                    mensajeDiv.style.display = 'none';
+                }
+            }
+        }
+
+        // Event listeners
+        fechaInput.addEventListener('change', cargarHorasOcupadas);
+        barberoSelect.addEventListener('change', function() {
+            if (fechaInput.value) {
+                cargarHorasOcupadas();
+            }
+        });
+        horaInput.addEventListener('change', actualizarHorasDisponibles);
+
+        // Cargar horas ocupadas si ya hay una fecha seleccionada
+        if (fechaInput.value) {
+            cargarHorasOcupadas();
+        }
     </script>
     
     <style>

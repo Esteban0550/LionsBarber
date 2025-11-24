@@ -19,6 +19,65 @@
                 </div>
             @endif
 
+            <!-- Búsqueda y Filtros -->
+            <div class="mb-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-gray-200 dark:border-neutral-700 p-4">
+                <form method="GET" action="{{ route('admin.users') }}" class="flex flex-wrap gap-4 items-end">
+                    <!-- Búsqueda -->
+                    <div class="flex-1 min-w-[200px]">
+                        <label for="search" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Buscar
+                        </label>
+                        <input type="text" 
+                               id="search" 
+                               name="search" 
+                               value="{{ request('search') }}"
+                               placeholder="Nombre o email..."
+                               class="w-full px-3 py-2 border border-gray-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+
+                    <!-- Filtro por Rol -->
+                    <div class="min-w-[150px]">
+                        <label for="role" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Rol
+                        </label>
+                        <select id="role" 
+                                name="role" 
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="">Todos</option>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->name }}" {{ request('role') == $role->name ? 'selected' : '' }}>
+                                    {{ ucfirst($role->name) }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Filtro por Estado -->
+                    <div class="min-w-[150px]">
+                        <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Estado
+                        </label>
+                        <select id="status" 
+                                name="status" 
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="">Todos</option>
+                            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Activos</option>
+                            <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactivos</option>
+                        </select>
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="flex gap-2">
+                        <button type="submit" class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition">
+                            Filtrar
+                        </button>
+                        <a href="{{ route('admin.users') }}" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition">
+                            Limpiar
+                        </a>
+                    </div>
+                </form>
+            </div>
+
             <div class="bg-white dark:bg-neutral-800 overflow-hidden shadow-lg sm:rounded-lg border border-gray-200 dark:border-neutral-700">
                 <div class="p-6">
                     <div class="overflow-x-auto">
@@ -36,6 +95,9 @@
                                     </th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                         Estado
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        Citas
                                     </th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                         Fecha Registro
@@ -75,8 +137,8 @@
                                                     {{ ucfirst($user->role->name) }}
                                                 </span>
                                             @else
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                                                    Sin rol
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200 border border-yellow-300 dark:border-yellow-700">
+                                                    ⚠️ Sin rol
                                                 </span>
                                             @endif
                                         </td>
@@ -90,6 +152,18 @@
                                                     Activo
                                                 </span>
                                             @endif
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-sm text-gray-900 dark:text-white font-medium">
+                                                    {{ $user->citas()->count() }}
+                                                </span>
+                                                @if($user->citas()->count() > 0)
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">
+                                                        ({{ $user->citasComoBarbero()->count() }} como barbero)
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                             {{ $user->created_at->format('d/m/Y') }}

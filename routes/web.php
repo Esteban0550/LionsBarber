@@ -15,6 +15,7 @@ Route::get('/barberos', function () {
 
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
 Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
+Route::get('/citas/horas-ocupadas', [CitaController::class, 'getOccupiedHours'])->name('citas.horas-ocupadas');
 
 Route::get('/cortes-cabello', function () {
     return view('cortes-cabello');
