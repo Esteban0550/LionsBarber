@@ -30,7 +30,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-lg text-neutral-600 dark:text-neutral-400 bg-white dark:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-amber-500 transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div data-nav-name>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -89,7 +89,7 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-neutral-200 dark:border-neutral-700">
             <div class="px-4">
-                <div class="font-medium text-base text-neutral-800 dark:text-neutral-200">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-base text-neutral-800 dark:text-neutral-200" data-nav-name>{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-neutral-500 dark:text-neutral-400">{{ Auth::user()->email }}</div>
             </div>
 

@@ -39,7 +39,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request)
     {
         $request->user()->fill($request->validated());
 
@@ -50,13 +50,20 @@ class ProfileController extends Controller
         $request->user()->save();
 
         // Mantener el contexto admin si estaba en admin
-        $redirect = Redirect::route('profile.edit')->with('status', 'profile-updated');
-        
         if ($request->session()->get('admin_context', false)) {
             $request->session()->put('admin_context', true);
         }
         
-        return $redirect;
+        // Si es una petición AJAX, devolver JSON sin recargar
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Profile updated successfully'
+            ]);
+        }
+        
+        // Si no es AJAX, redirigir normalmente
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**

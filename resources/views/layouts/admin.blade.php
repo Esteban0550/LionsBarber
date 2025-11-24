@@ -299,12 +299,12 @@
                 <div x-data="{ menuIsOpen: false }" class="mt-auto" x-on:keydown.esc.window="menuIsOpen = false">
                     <button type="button" class="flex w-full items-center rounded-none gap-2 p-2 text-left text-neutral-600 hover:bg-black/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100 dark:focus-visible:outline-white" x-bind:class="menuIsOpen ? 'bg-black/10 dark:bg-white/10' : ''" aria-haspopup="true" x-on:click="menuIsOpen = ! menuIsOpen" x-bind:aria-expanded="menuIsOpen">
                         <div class="size-8 rounded-none bg-neutral-300 dark:bg-neutral-700 flex items-center justify-center">
-                            <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                            <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300" data-sidebar-initial>
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                             </span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-sm font-bold text-neutral-900 dark:text-neutral-100">{{ Auth::user()->name }}</span>
+                            <span class="text-sm font-bold text-neutral-900 dark:text-neutral-100" data-sidebar-name>{{ Auth::user()->name }}</span>
                             <span class="w-32 overflow-hidden text-ellipsis text-xs md:w-36" aria-hidden="true">{{ Auth::user()->email }}</span>
                             <span class="sr-only">profile settings</span>
                         </div>
