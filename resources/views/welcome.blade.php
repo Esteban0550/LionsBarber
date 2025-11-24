@@ -1,5 +1,5 @@
 <x-user-layout>
-    <div class="max-w-7xl mx-auto p-6 md:p-8 lg:p-12">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12">
         <!-- Hero Section -->
         <div 
             x-data="{
@@ -49,9 +49,9 @@
                     type();
                 }
             }"
-            class="text-center py-8 md:py-12 lg:py-16"
+            class="text-center py-6 sm:py-8 md:py-12 lg:py-16"
         >
-            <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-neutral-900 dark:text-neutral-100 mb-4 sm:mb-6">
                 <span class="inline-block">
                     <span x-text="displayedText"></span>
                     <span 
@@ -63,15 +63,15 @@
                     </span>
                 </span>
             </h1>
-            <div class="flex justify-center mt-6 md:mt-8">
-                <img src="{{ asset('images/pngggggggg12345 (1).png') }}" alt="LionsBarber Logo" class="max-w-xs md:max-w-sm lg:max-w-md w-auto h-auto object-contain">
+            <div class="flex justify-center mt-4 sm:mt-6 md:mt-8">
+                <img src="{{ asset('images/pngggggggg12345 (1).png') }}" alt="LionsBarber Logo" class="max-w-[200px] sm:max-w-xs md:max-w-sm lg:max-w-md w-auto h-auto object-contain">
             </div>
         </div>
 
         <!-- Quick Actions Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
             <!-- Agendar Cita Card -->
-            <a href="{{ route('citas') }}" class="group bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-6 border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
+            <a href="{{ route('citas') }}" class="group bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4 sm:p-6 border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all duration-300">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-2">
                         <svg class="h-6 w-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,8 +111,8 @@
         </div>
 
         <!-- Info Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-6 border border-neutral-200 dark:border-neutral-700">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4 sm:p-6 border border-neutral-200 dark:border-neutral-700">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-2">
                         <svg class="h-6 w-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,11 +1,11 @@
 <x-user-layout>
-    <div class="max-w-7xl mx-auto p-6 md:p-8 lg:p-12">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12">
         <!-- Header Section -->
-        <div class="mb-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div class="mb-8 sm:mb-12 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
                 Cortes de Cabello
             </h1>
-            <p class="text-lg text-gray-300 dark:text-gray-400 max-w-2xl mx-auto">
+            <p class="text-base sm:text-lg text-gray-300 dark:text-gray-400 max-w-2xl mx-auto px-4">
                 Descubre nuestra colección de cortes de cabello profesionales. Cada estilo está diseñado para realzar tu personalidad y mantenerte a la vanguardia de las tendencias.
             </p>
         </div>

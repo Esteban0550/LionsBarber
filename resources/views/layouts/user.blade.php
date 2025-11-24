@@ -116,7 +116,7 @@
             <!-- dark overlay for when the sidebar is open on smaller screens  -->
             <div x-cloak x-show="showSidebar" class="fixed inset-0 z-10 bg-neutral-950/10 backdrop-blur-xs md:hidden" aria-hidden="true" x-on:click="showSidebar = false" x-transition.opacity></div>
 
-            <nav x-cloak class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col bg-neutral-100 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:bg-neutral-800" x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
+            <nav x-cloak @click="if (window.innerWidth < 768 && ($event.target.tagName === 'A' || $event.target.closest('a'))) showSidebar = false" class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col bg-neutral-100 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:bg-neutral-800" x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
 
                 <!-- logo  -->
                 <a href="{{ route('welcome') }}" class="mb-4 w-full flex items-center justify-center">
@@ -275,7 +275,7 @@
                 </nav>
                 
                 <!-- Page Content -->
-                <div>
+                <div class="w-full">
                     {{ $slot }}
                 </div>
             </div>

@@ -1,17 +1,17 @@
 <x-user-layout>
-    <div class="max-w-6xl mx-auto p-6 md:p-8 lg:p-12">
-        <div class="mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 lg:p-12">
+        <div class="mb-6 sm:mb-8">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 sm:mb-4">
                 Nuestros Barberos
             </h1>
-            <p class="text-lg text-neutral-600 dark:text-neutral-400">
+            <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400">
                 Conoce a nuestro equipo de profesionales expertos en cortes y estilos
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <!-- Barber Card 1 -->
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
                 <div class="flex flex-col items-center text-center">
                     <div class="w-32 h-32 bg-neutral-200 dark:bg-neutral-700 rounded-full mb-4 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16 text-neutral-400">
